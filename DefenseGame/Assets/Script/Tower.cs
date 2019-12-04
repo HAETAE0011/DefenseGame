@@ -6,6 +6,7 @@ public class Tower : MonoBehaviour
 {
 
     private Transform target;
+    [SerializeField]
     private Enemy targetEnemy;
 
     [Header("General")]
@@ -23,12 +24,13 @@ public class Tower : MonoBehaviour
     private float fireCountdown = 0f;
 
     [Header("Map")]
-
-    public GameObject endPoint;
+    [SerializeField]
+    private GameObject endPoint;
 
 
     void Start()
     {
+        endPoint = GameObject.FindGameObjectWithTag("EndPoint");
         InvokeRepeating("UpdateEnemy", 0f, 0.5f);
     }
 
@@ -41,27 +43,25 @@ public class Tower : MonoBehaviour
         GameObject shootEnemy = null;
 
         float shortestDistance = Mathf.Infinity;
+        float towertoEnemy = Mathf.Infinity;
 
         foreach (GameObject enemy in enemies)
         {
-            //Check if enemy in the attack range? 
+            float closesttoEndpoint = Vector3.Distance(enemy.transform.position, endPoint.transform.position);
 
-            //if in the range, check if the enemy is the closest to the end point
+            float towertoEnemynear = Vector3.Distance(transform.position, enemy.transform.position);
 
-            //float closesttoEndpoint = Vector3.Distance(enemy.transform.position, endPoint.transform.position);
-
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-
-            if (distanceToEnemy < shortestDistance)
+            if (closesttoEndpoint < shortestDistance)
             {
-                shortestDistance = distanceToEnemy; 
+                towertoEnemy = towertoEnemynear;
+                shortestDistance = closesttoEndpoint; 
                 shootEnemy = enemy;
             }
         }
 
-        if (shootEnemy != null && shortestDistance <= rangeRadius)
+
+        if (shootEnemy != null && towertoEnemy <= rangeRadius)
         {
-            Debug.Log("Test");
             target = shootEnemy.transform;
             targetEnemy = shootEnemy.GetComponent<Enemy>();
         }
@@ -96,8 +96,6 @@ public class Tower : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(dir);
 
         Vector3 rotation = Quaternion.Lerp(mesh.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        Debug.Log(rotation);
-
         mesh.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
