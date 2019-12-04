@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100)) {
                 if (hit.collider.gameObject.tag == ("MovePoint")) {
                     
-                    Instantiate<GameObject>(prefab, (hit.collider.gameObject.transform.position), Quaternion.Euler(-90,0,0));
+                    Instantiate<GameObject>(prefab, (hit.collider.gameObject.transform.position), Quaternion.identity);
                 }
             }
         }

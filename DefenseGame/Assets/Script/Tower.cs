@@ -12,6 +12,7 @@ public class Tower : MonoBehaviour
 
     public float rangeRadius = 15f;
     public float turnSpeed = 10f;
+    public Transform mesh;
 
     public Transform firePoint;
 
@@ -47,20 +48,20 @@ public class Tower : MonoBehaviour
 
             //if in the range, check if the enemy is the closest to the end point
 
-            float closesttoEndpoint = Vector3.Distance(enemy.transform.position, endPoint.transform.position);
+            //float closesttoEndpoint = Vector3.Distance(enemy.transform.position, endPoint.transform.position);
 
-           // float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
 
-            if (closesttoEndpoint < shortestDistance)
+            if (distanceToEnemy < shortestDistance)
             {
-                shortestDistance = closesttoEndpoint;
-                Debug.Log("Test");
+                shortestDistance = distanceToEnemy; 
                 shootEnemy = enemy;
             }
         }
 
         if (shootEnemy != null && shortestDistance <= rangeRadius)
         {
+            Debug.Log("Test");
             target = shootEnemy.transform;
             targetEnemy = shootEnemy.GetComponent<Enemy>();
         }
@@ -73,8 +74,12 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-        LockOnTarget();
+        if (target == null)
+        {
+            return;
+        }
 
+        LockOnTarget();
 
         if (fireCountdown <= 0f)
         {
@@ -90,9 +95,10 @@ public class Tower : MonoBehaviour
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
 
-        Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        Vector3 rotation = Quaternion.Lerp(mesh.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        Debug.Log(rotation);
 
-        transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        mesh.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
     void Shoot()
