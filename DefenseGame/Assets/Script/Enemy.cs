@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public Transform startpoint;
+    public Transform endpoint;
     // Start is called before the first frame update
     void Start()
     {
