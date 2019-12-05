@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
         float step = speed * Time.deltaTime; // calculate distance to move
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
 
+        speed = 20f - (currentHealth/10);
         if (target.position == endpoint.position) {
             if (transform.position == target.position) {
                 Die();
