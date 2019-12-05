@@ -15,6 +15,12 @@ public class Tower : MonoBehaviour
     public float turnSpeed = 10f;
     public Transform mesh;
 
+    [Header("Upgrade")]
+    public int kill;
+    public GameObject upgrade;
+    public bool isUpgraded = false;
+    public Material upGradeMat;
+
     public Transform firePoint;
 
     [Header("Use for Shoot")]
@@ -30,6 +36,7 @@ public class Tower : MonoBehaviour
 
     void Start()
     {
+        kill = 0;
         endPoint = GameObject.FindGameObjectWithTag("EndPoint");
         InvokeRepeating("UpdateEnemy", 0f, 0.5f);
     }
@@ -87,7 +94,30 @@ public class Tower : MonoBehaviour
             fireCountdown = 1f / fireRate;
         }
 
+        if (target.GetComponent<Enemy>().isDead)
+        {
+            kill++;
+            Debug.Log(kill);
+        }
+
+        if (kill >= 5 && isUpgraded == false)
+        {
+            towerUpgrate();
+            isUpgraded = true;
+        }
+
         fireCountdown -= Time.deltaTime;
+    }
+
+    void towerUpgrate()
+    {
+        GameObject effectIns = (GameObject)Instantiate(upgrade, transform.position, transform.rotation);
+        Destroy(effectIns, 5f);
+        gameObject.GetComponentInChildren<Renderer>().material = upGradeMat;
+
+        bulletPrefab.GetComponent<Bullet>().damage = 50;
+
+        //Destroy(gameObject);
     }
 
     void LockOnTarget()

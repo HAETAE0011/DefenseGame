@@ -45,9 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de80e708380c4e64e83b01bc63a3fd9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetEnemy: {fileID: 0}
   rangeRadius: 6.5
   turnSpeed: 10
   mesh: {fileID: 9107267516943297930}
+  kill: 0
+  upgrade: {fileID: 7920399299099981328, guid: 5b51a07754e8dcb4c9ab3123e9a11c9d, type: 3}
+  isUpgraded: 0
+  upGradeMat: {fileID: 2100000, guid: f952514428e0e5444a63e930304eed47, type: 2}
   firePoint: {fileID: 7281812945944169165}
   bulletPrefab: {fileID: 272020267118922199, guid: 60cdaa90103af414fbd8d197f4f99876,
     type: 3}

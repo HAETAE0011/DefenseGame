@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
 
     public float speed = 70f;
 
-    public int damage = 50;
+    public int damage = 20;
 
     public float explosionRadius = 0f;
 
@@ -59,6 +59,7 @@ public class Bullet : MonoBehaviour
         }
 
         Destroy(gameObject);
+        
     }
 
     void Explode()
@@ -79,7 +80,7 @@ public class Bullet : MonoBehaviour
 
         if (e != null)
         {
-            //e.TakeDamage(damage);
+            e.TakeDamage(damage);
         }
     }
 

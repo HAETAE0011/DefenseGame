@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1252,6 +1252,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startpoint: {fileID: 1448076720}
   endpoint: {fileID: 121422399}
+  totalHealth: 100
+  currentHealth: 0
+  dieEffect: {fileID: 156114, guid: a61f8203d35634e42bf81bdc626c3c36, type: 3}
+  isDead: 0
 --- !u!1 &184125426
 GameObject:
   m_ObjectHideFlags: 0
@@ -5786,6 +5790,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startpoint: {fileID: 1448076720}
   endpoint: {fileID: 121422399}
+  totalHealth: 100
+  currentHealth: 0
+  dieEffect: {fileID: 156114, guid: a61f8203d35634e42bf81bdc626c3c36, type: 3}
+  isDead: 0
 --- !u!65 &996287352
 BoxCollider:
   m_ObjectHideFlags: 0
