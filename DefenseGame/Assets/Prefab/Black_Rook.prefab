@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4334628564448165223}
   - component: {fileID: 5461905515323362202}
   m_Layer: 0
-  m_Name: Rook_ver1
-  m_TagString: Untagged
+  m_Name: Black_Rook
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +49,8 @@ MonoBehaviour:
   rangeRadius: 6.5
   turnSpeed: 10
   mesh: {fileID: 9107267516943297930}
+  dieEffect: {fileID: 7920399299099981328, guid: 5b51a07754e8dcb4c9ab3123e9a11c9d,
+    type: 3}
   kill: 0
   upgrade: {fileID: 7920399299099981328, guid: 5b51a07754e8dcb4c9ab3123e9a11c9d, type: 3}
   isUpgraded: 0
@@ -59,6 +61,12 @@ MonoBehaviour:
   fireRate: 1
   endPoint: {fileID: 3772520321706284802, guid: efb884f515395c64ca80a68bae4bc3b4,
     type: 3}
+  useLaser: 0
+  lineRenderer: {fileID: 0}
+  impactEffect: {fileID: 0}
+  impactLight: {fileID: 0}
+  damageOverTime: 30
+  slowAmount: 0.5
 --- !u!1 &2067947380489298588
 GameObject:
   m_ObjectHideFlags: 0

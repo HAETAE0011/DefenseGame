@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 8099047460554988970}
   m_Layer: 0
   m_Name: Black_Bishop
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,6 +174,8 @@ MonoBehaviour:
   rangeRadius: 6
   turnSpeed: 10
   mesh: {fileID: 1819516100442309454}
+  dieEffect: {fileID: 7920399299099981328, guid: 5b51a07754e8dcb4c9ab3123e9a11c9d,
+    type: 3}
   kill: 0
   upgrade: {fileID: 7920399299099981328, guid: 5b51a07754e8dcb4c9ab3123e9a11c9d, type: 3}
   isUpgraded: 0
@@ -292,10 +294,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6388867880987250702}
     m_Modifications:
-    - target: {fileID: 7908479088956639401, guid: 491db5a88d621934094b4803879e6d94,
+    - target: {fileID: 7835334426119652633, guid: 491db5a88d621934094b4803879e6d94,
         type: 3}
-      propertyPath: m_Name
-      value: ImpactEffect
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835334426119652633, guid: 491db5a88d621934094b4803879e6d94,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.37270948
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835334426119652633, guid: 491db5a88d621934094b4803879e6d94,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.109803915
       objectReference: {fileID: 0}
     - target: {fileID: 7912041318528481927, guid: 491db5a88d621934094b4803879e6d94,
         type: 3}
@@ -352,20 +364,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7835334426119652633, guid: 491db5a88d621934094b4803879e6d94,
+    - target: {fileID: 7908479088956639401, guid: 491db5a88d621934094b4803879e6d94,
         type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7835334426119652633, guid: 491db5a88d621934094b4803879e6d94,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.37270948
-      objectReference: {fileID: 0}
-    - target: {fileID: 7835334426119652633, guid: 491db5a88d621934094b4803879e6d94,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.109803915
+      propertyPath: m_Name
+      value: ImpactEffect
       objectReference: {fileID: 0}
     - target: {fileID: 8033416369614831037, guid: 491db5a88d621934094b4803879e6d94,
         type: 3}

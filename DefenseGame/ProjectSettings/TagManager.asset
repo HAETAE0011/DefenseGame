@@ -7,6 +7,8 @@ TagManager:
   - MovePoint
   - Enemy
   - EndPoint
+  - Placements
+  - Tower
   layers:
   - Default
   - TransparentFX

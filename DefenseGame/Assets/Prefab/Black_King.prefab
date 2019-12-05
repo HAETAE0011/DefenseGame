@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2092825445943523049}
   - component: {fileID: 2092825445939373323}
   m_Layer: 0
-  m_Name: Black King
-  m_TagString: Untagged
+  m_Name: Black_King
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -14,6 +14,7 @@ public class Tower : MonoBehaviour
     public float rangeRadius = 15f;
     public float turnSpeed = 10f;
     public Transform mesh;
+    public GameObject dieEffect;
 
     [Header("Upgrade")]
     public int kill;
@@ -126,7 +127,7 @@ public class Tower : MonoBehaviour
             Debug.Log(kill);
         }
 
-        if (kill >= 5 && isUpgraded == false)
+        if (kill >= 2 && isUpgraded == false)
         {
             towerUpgrate();
             isUpgraded = true;
@@ -193,4 +194,10 @@ public class Tower : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, rangeRadius);
     }
 
+
+    public void DestroySelf() {
+        GameObject effectIns = (GameObject)Instantiate(dieEffect, transform.position, transform.rotation);
+        Destroy(effectIns, 5f);
+        Destroy(gameObject);
+    }
 }

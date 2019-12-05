@@ -7,12 +7,15 @@ public class SelectTower : MonoBehaviour
     public TowerBluePrint kingTower;
     public TowerBluePrint queenTower;
     public TowerBluePrint knightTower;
+    public TowerBluePrint rookTower;
+    public TowerBluePrint bishopTower;
 
     BuildManager buildManager;
 
     void Start()
     {
         buildManager = BuildManager.instance;
+        buildManager.SelectTowerToBuild(rookTower);
     }
 
     public void SelectKingTower()
@@ -28,5 +31,15 @@ public class SelectTower : MonoBehaviour
     public void SelectKnightTower()
     {
         buildManager.SelectTowerToBuild(knightTower);
+    }
+
+    public void SelectRookTower()
+    {
+        buildManager.SelectTowerToBuild(rookTower);
+    }
+
+    public void SelectBishopTower()
+    {
+        buildManager.SelectTowerToBuild(bishopTower);
     }
 }
