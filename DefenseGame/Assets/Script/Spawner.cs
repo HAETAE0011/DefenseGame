@@ -25,21 +25,16 @@ public class Spawner : MonoBehaviour
                 if (hit.collider.gameObject.tag == ("MovePoint")) {
 
                     //Instantiate<GameObject>(tower, (hit.collider.gameObject.transform.position), Quaternion.identity);
-                    BuildTurret(buildManager.GetTowerToBuild());
+                    BuildTurret(buildManager.GetTowerToBuild(), hit.collider.gameObject.transform.position);
                 }
             }
         }
     }
 
-    public Vector3 GetBuildPosition()
-    {
-        return transform.position;
-    }
-
-    void BuildTurret(TowerBluePrint blueprint)
+    void BuildTurret(TowerBluePrint blueprint, Vector3 position)
     {
 
-        GameObject _tower = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+        GameObject _tower = (GameObject)Instantiate(blueprint.prefab, position, Quaternion.identity);
         tower = _tower;
 
         Debug.Log("Tower build!");
