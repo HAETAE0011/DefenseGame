@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
 
     public float explosionRadius = 0f;
 
-    //public GameObject impactEffect;
+    public GameObject impactEffect;
 
     public void Seek(Transform _target)
     {
@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour
 
         if (dir.magnitude <= distanceThisFrame)
         {
-            //HitTarget();
+            HitTarget();
             return;
         }
 
@@ -44,22 +44,22 @@ public class Bullet : MonoBehaviour
 
     }
 
-    //void HitTarget()
-    //{
-    //    GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-    //    Destroy(effectIns, 5f);
+    void HitTarget()
+    {
+        GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+        Destroy(effectIns, 5f);
 
-    //    if (explosionRadius > 0f)
-    //    {
-    //        Explode();
-    //    }
-    //    else
-    //    {
-    //        Damage(target);
-    //    }
+        if (explosionRadius > 0f)
+        {
+            Explode();
+        }
+        else
+        {
+            Damage(target);
+        }
 
-    //    Destroy(gameObject);
-    //}
+        Destroy(gameObject);
+    }
 
     void Explode()
     {
