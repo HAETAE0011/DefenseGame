@@ -6,6 +6,10 @@ public class Enemy : MonoBehaviour
 {
     public Transform startpoint;
     public Transform endpoint;
+    public float startSpeed = 10f;
+
+    [HideInInspector]
+    public float speed;
 
     [Header("Enemy Set Up")]
 
@@ -42,6 +46,9 @@ public class Enemy : MonoBehaviour
 
         Destroy(gameObject);
     }
+    public void Slow(float pct)
+    {
+        speed = startSpeed * (1f - pct);
+    }
 
-    
 }

@@ -33,6 +33,14 @@ public class Tower : MonoBehaviour
     [SerializeField]
     private GameObject endPoint;
 
+    [Header("Use Laser")]
+    public bool useLaser = false;
+    public LineRenderer lineRenderer;
+    public ParticleSystem impactEffect;
+    public Light impactLight;
+    public int damageOverTime = 30;
+    public float slowAmount = .5f;
+
 
     void Start()
     {
@@ -83,15 +91,33 @@ public class Tower : MonoBehaviour
     {
         if (target == null)
         {
+            if (useLaser)
+            {
+                if (lineRenderer.enabled)
+                {
+                    lineRenderer.enabled = false;
+                    impactEffect.Stop();
+                    impactLight.enabled = false;
+                }
+            }
             return;
         }
 
         LockOnTarget();
 
-        if (fireCountdown <= 0f)
+        if (useLaser)
         {
-            Shoot();
-            fireCountdown = 1f / fireRate;
+            Laser();
+        }
+        else
+        {
+            if (fireCountdown <= 0f)
+            {
+                Shoot();
+                fireCountdown = 1f / fireRate;
+            }
+
+            fireCountdown -= Time.deltaTime;
         }
 
         if (target.GetComponent<Enemy>().isDead)
@@ -139,6 +165,27 @@ public class Tower : MonoBehaviour
             bullet.Seek(target);
     }
 
+    void Laser()
+    {
+        targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
+        targetEnemy.Slow(slowAmount);
+
+        if (!lineRenderer.enabled)
+        {
+            lineRenderer.enabled = true;
+            impactEffect.Play();
+            impactLight.enabled = true;
+        }
+
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, target.position);
+
+        Vector3 dir = firePoint.position - target.position;
+
+        impactEffect.transform.position = target.position + dir.normalized;
+
+        impactEffect.transform.rotation = Quaternion.LookRotation(dir);
+    }
 
     void OnDrawGizmosSelected()
     {
