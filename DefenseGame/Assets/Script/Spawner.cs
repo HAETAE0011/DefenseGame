@@ -15,6 +15,11 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (buildManager.towerToBuild == null)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -22,7 +27,8 @@ public class Spawner : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 100))
             {
-                if (hit.collider.gameObject.tag == ("MovePoint")) {
+                if (hit.collider.gameObject.tag == ("MovePoint"))
+                {
 
                     //Instantiate<GameObject>(tower, (hit.collider.gameObject.transform.position), Quaternion.identity);
                     BuildTurret(buildManager.GetTowerToBuild(), hit.collider.gameObject.transform.position);
@@ -36,7 +42,6 @@ public class Spawner : MonoBehaviour
 
         GameObject _tower = (GameObject)Instantiate(blueprint.prefab, position, Quaternion.identity);
         tower = _tower;
-
         Debug.Log("Tower build!");
     }
 
