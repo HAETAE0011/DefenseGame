@@ -6,7 +6,7 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
 
-    private TowerBluePrint towerToBuild;
+    public TowerBluePrint towerToBuild;
 
     void Awake()
     {

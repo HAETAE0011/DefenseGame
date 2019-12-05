@@ -121,7 +121,7 @@ public class Tower : MonoBehaviour
             fireCountdown -= Time.deltaTime;
         }
 
-        if (target.GetComponent<Enemy>().isDead)
+        if (targetEnemy.isDead)
         {
             kill++;
             Debug.Log(kill);
@@ -140,6 +140,7 @@ public class Tower : MonoBehaviour
     {
         GameObject effectIns = (GameObject)Instantiate(upgrade, transform.position, transform.rotation);
         Destroy(effectIns, 5f);
+
         gameObject.GetComponentInChildren<Renderer>().material = upGradeMat;
 
         bulletPrefab.GetComponent<Bullet>().damage = 50;
